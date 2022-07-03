@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nmadi <nmadi@student.42abudhabi.ae>        +#+  +:+       +#+        */
+/*   By: imustafa <imustafa@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 22:34:51 by nmadi             #+#    #+#             */
-/*   Updated: 2022/07/02 15:13:18 by nmadi            ###   ########.fr       */
+/*   Updated: 2022/07/03 17:37:21 by imustafa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -160,5 +160,6 @@ char	*cmd_copy(char *input);
 int		check_space(char *str);
 char	*ft_strjoin_and_free(char *s1, char const *s2);
 int		word_count(char *input);
+char	*line_update(void);
 
 #endif

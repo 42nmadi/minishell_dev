@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utility.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nmadi <nmadi@student.42abudhabi.ae>        +#+  +:+       +#+        */
+/*   By: imustafa <imustafa@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/14 18:43:26 by imustafa          #+#    #+#             */
-/*   Updated: 2022/06/07 15:57:26 by nmadi            ###   ########.fr       */
+/*   Updated: 2022/07/03 17:36:42 by imustafa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,4 +80,33 @@ char	*ft_strjoin_and_free(char *s1, char const *s2)
 	str[i] = '\0';
 	safe_free(s1);
 	return (str);
+}
+
+char	*line_update(void)
+{
+	char	buf[2];
+	char	*line;
+	char	*final;
+
+	line = ft_strdup("");
+	final = line;
+	write(1, "> ", 2);
+	while (1)
+	{
+		read(0, buf, 1);
+		buf[1] = '\0';
+		line = ft_strjoin(line, buf);
+		if (ft_strchr(line, '\n'))
+		{
+			if (!ft_strchr(line, '|'))
+				break ;
+			write(1, "> ", 2);
+			final = ft_strjoin_and_free(final, ft_strtrim(line, "\n"));
+			free(line);
+			line = strdup("");
+		}
+	}
+	final = ft_strjoin_and_free(final, ft_strtrim(line, "\n"));
+	free(line);
+	return (final);
 }
